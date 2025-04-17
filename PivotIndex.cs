@@ -1,18 +1,17 @@
-﻿using System.Numerics;
+﻿using System;
 
-class Solution
+public class Solution
 {
-    public:
-    int pivotIndex(vector<int>& nums)
+    public int PivotIndex(int[] nums)
     {
         int totalSum = 0;
-        for (int num : nums)
+        foreach (int num in nums)
         {
             totalSum += num;
         }
 
         int leftSum = 0;
-        for (int i = 0; i < nums.size(); ++i)
+        for (int i = 0; i < nums.Length; ++i)
         {
             int rightSum = totalSum - leftSum - nums[i];
             if (leftSum == rightSum)
@@ -24,4 +23,4 @@ class Solution
 
         return -1;
     }
-};
+}

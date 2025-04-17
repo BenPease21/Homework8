@@ -1,33 +1,31 @@
-﻿class Solution
+﻿public class Solution
 {
-    public:
-    int countStudents(vector<int>& students, vector<int>& sandwiches)
+    public int CountStudents(int[] students, int[] sandwiches)
     {
-        queue<int> q;
-        for (int s : students)
+        Queue<int> q = new Queue<int>();
+        foreach (int s in students)
         {
-            q.push(s);
+            q.Enqueue(s);
         }
 
-        int i = 0; 
+        int i = 0;
         int failedAttempts = 0;
 
-        while (!q.empty() && failedAttempts < q.size())
+        while (q.Count > 0 && failedAttempts < q.Count)
         {
-            if (q.front() == sandwiches[i])
+            if (q.Peek() == sandwiches[i])
             {
-                q.pop();
+                q.Dequeue();
                 i++;
-                failedAttempts = 0; 
+                failedAttempts = 0;
             }
             else
             {
-                q.push(q.front());
-                q.pop();
+                q.Enqueue(q.Dequeue());
                 failedAttempts++;
             }
         }
 
-        return q.size(); 
+        return q.Count;
     }
-};
+}

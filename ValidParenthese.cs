@@ -1,38 +1,33 @@
 ﻿using System.Collections.Generic;
 
-
-// Idk why this one isn't working in Visual Studio,
-// it runs in the code, but its erroring out like crazy here
-
-
-class Solution
+public class Solution
 {
-    public:
-    bool isValid(string s)
+    public bool IsValid(string s)
     {
-        stack<char> stack;
-        unordered_map<char, char> bracketMap = {
+        Stack<char> stack = new Stack<char>();
+        Dictionary<char, char> bracketMap = new Dictionary<char, char>
+        {
             {')', '('},
             {']', '['},
             {'}', '{'}
         };
 
-        for (char c : s)
+        foreach (char c in s)
         {
-            if (bracketMap.count(c))
+            if (bracketMap.ContainsKey(c))
             {
-                if (stack.empty() || stack.top() != bracketMap[c])
+                if (stack.Count == 0 || stack.Peek() != bracketMap[c])
                 {
                     return false;
                 }
-                stack.pop();
+                stack.Pop();
             }
             else
             {
-                stack.push(c);
+                stack.Push(c);
             }
         }
 
-        return stack.empty();
+        return stack.Count == 0;
     }
-};
+}

@@ -1,38 +1,36 @@
-﻿using System.Numerics;
-
-class Solution
+﻿public class Solution
 {
-    public:
-    int calPoints(vector<string>& operations)
+    public int CalPoints(IList<string> operations)
     {
-        vector<int> record;
+        List<int> record = new List<int>();
 
-        for (const string&op : operations) {
+        foreach (string op in operations)
+        {
             if (op == "C")
             {
-                record.pop_back();
+                record.RemoveAt(record.Count - 1);
             }
             else if (op == "D")
             {
-                record.push_back(2 * record.back());
+                record.Add(2 * record[record.Count - 1]);
             }
             else if (op == "+")
             {
-                int n = record.size();
-                record.push_back(record[n - 1] + record[n - 2]);
+                int n = record.Count;
+                record.Add(record[n - 1] + record[n - 2]);
             }
             else
             {
-                record.push_back(stoi(op));
+                record.Add(int.Parse(op));
             }
         }
 
         int total = 0;
-        for (int score : record)
+        foreach (int score in record)
         {
             total += score;
         }
 
         return total;
     }
-};
+}

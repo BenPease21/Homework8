@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-class RecentCounter
+﻿class RecentCounter
 {
     private:
     queue<int> q;
