@@ -1,20 +1,23 @@
-﻿class RecentCounter
+﻿public class RecentCounter
 {
-    private:
-    queue<int> q;
+    private List<int> requests;
+    private int startIndex;
 
-    public:
-    RecentCounter()
+    public RecentCounter()
     {
+        requests = new List<int>();
+        startIndex = 0;
     }
 
-    int ping(int t)
+    public int Ping(int t)
     {
-        q.push(t);
-        while (!q.empty() && q.front() < t - 3000)
+        requests.Add(t);
+
+        while (requests[startIndex] < t - 3000)
         {
-            q.pop();
+            startIndex++;
         }
-        return q.size();
+
+        return requests.Count - startIndex;
     }
-};
+}

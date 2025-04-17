@@ -5,8 +5,7 @@ public class Solution
     public bool IsValid(string s)
     {
         Stack<char> stack = new Stack<char>();
-        Dictionary<char, char> bracketMap = new Dictionary<char, char>
-        {
+        Dictionary<char, char> bracketMap = new Dictionary<char, char> {
             {')', '('},
             {']', '['},
             {'}', '{'}
